@@ -2,23 +2,31 @@ import React from "react";
 
 // handles creating tasks
 
-const Form = ({ setInputText }) => {
+const Form = ({ inputTxt, setInputTxt , todos, setTodos }) => {
     const inputHandler = e =>{
-        setInputText(e.target.value);
+        setInputTxt(e.target.value);
     }
 
     const submitHandler = e => {
         e.preventDefault(); // prevents submit button from refreshing page
+        setTodos([
+            ...todos, {
+                text: inputTxt, 
+                completed: false,
+                id: Math.random() //toDo
+            }
+        ])
+        setInputTxt(""); //resets input field after submission
     }
 
     return(
         <form>
-            <input onChange={inputHandler} type="text" class="todo-input" />
-            <button onClick={submitHandler} class="todo-button" type="submit">
-                <i class="fas fa-plus-square"></i>
+            <input onChange={inputHandler} type="text" className="todo-input" />
+            <button onClick={submitHandler} className="todo-button" type="submit">
+                <i className="fas fa-plus-square"></i>
             </button>
-            <div class="select">
-                <select name="todos" class="filter-todo">
+            <div className="select">
+                <select name="todos" className="filter-todo">
                 <option value="all">All</option>
                 <option value="completed">Completed</option>
                 <option value="uncompleted">Uncompleted</option>

@@ -6,6 +6,7 @@ import Todolist from "./components/Todolist"
 
 
 function App() {
+  // storage for all states, drill into children
   const[inputTxt, setInputTxt] = useState('');
   const[todos, setTodos] = useState([])
   return (
@@ -15,8 +16,8 @@ function App() {
           Andrew's CVWO todo
         </h1>
       </header>
-      <Form setInputTxt={setInputTxt}/>
-      <Todolist todos={setTodos}/> 
+      <Form inputTxt={inputTxt} setInputTxt={setInputTxt} todos={todos} setTodos={setTodos}/>
+      <Todolist/> 
     </div>
   );
 }
