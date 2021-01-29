@@ -3,13 +3,18 @@ import React from "react";
 // handles creating tasks
 
 const Form = ({ setInputText }) => {
-    const inputTextHandler = e =>{
+    const inputHandler = e =>{
         setInputText(e.target.value);
     }
+
+    const submitHandler = e => {
+        e.preventDefault(); // prevents submit button from refreshing page
+    }
+
     return(
         <form>
-            <input onChange={inputTextHandler} type="text" class="todo-input" />
-            <button class="todo-button" type="submit">
+            <input onChange={inputHandler} type="text" class="todo-input" />
+            <button onClick={submitHandler} class="todo-button" type="submit">
                 <i class="fas fa-plus-square"></i>
             </button>
             <div class="select">
