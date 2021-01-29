@@ -27,7 +27,7 @@ const Form = ({ inputTxt, setInputTxt , todos, setTodos, setMode }) => {
         <form>
             <input onChange={inputHandler} value={inputTxt} type="text" className="todo-input" />
             <button onClick={submitHandler} className="todo-button" type="submit">
-                <i class="fas fa-plus-square"></i>
+                <i className="fas fa-plus-square"></i>
                 {/*font awesome logo */}
             </button>
             <div className="select">

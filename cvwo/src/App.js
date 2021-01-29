@@ -21,8 +21,26 @@ function App() {
     }
   }
 
+  const saveLocal = () =>{
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }
+
+  const getLocal = () => {
+    if(localStorage.getItem("todos") === null){
+      localStorage.setItem("todos", JSON.stringify([]));
+    } else{
+      let local = JSON.parse(localStorage.getItem("todos", JSON.stringify(todos)));
+      setTodos(local);
+    }
+  }
+
+  useEffect(() =>{
+    getLocal();
+  }, []) // gets cached todos
+
   useEffect(() =>{
     modeHandler();
+    saveLocal();
   }, [todos, mode]) // watches for changes in todos and mode
 
   return (
